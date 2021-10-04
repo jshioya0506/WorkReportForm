@@ -39,14 +39,14 @@ namespace NEXUS.SCG.TOOLS
                 return;
             }
             // 取得したファイル名を画面に表示
-            this.lblFileName.Text = Path.GetFileName(filePath);
+            this.lblFileName.Text = Path.GetFileName(openFileDialog.FileName);
 
             // Excelファイルをオープンし、勤怠管理情報(WorkReportData)を取得
             WorkReportData reportData = null;
             using (WorkReportAccessor accessor = new WorkReportAccessor())
             {
                 // Excelファイルを開く
-                accessor.Open(filePath);
+                accessor.Open(openFileDialog.FileName);
 
                 // 勤怠情報のシート一覧を取得し、コンボボックスに設定
                 List<string> sheetNames = accessor.GetSheetNames();
